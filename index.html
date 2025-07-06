@@ -13,12 +13,31 @@
     }
     header {
       background: #1a1a1a;
-      padding: 20px;
+      padding: 40px 20px 20px;
       text-align: center;
+      position: relative;
     }
     h1 {
       margin: 0;
       font-size: 2.5em;
+    }
+    .typing {
+      font-weight: 500;
+      font-size: 1.2em;
+      color: #4da6ff;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards, blink 0.7s infinite step-end alternate;
+      margin-top: 10px;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
     }
     nav {
       text-align: center;
@@ -29,11 +48,14 @@
       margin: auto;
       padding: 20px;
     }
-    .proof img {
+    .projects img {
       max-width: 100%;
       border-radius: 8px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       box-shadow: 0 0 10px #222;
+    }
+    .project {
+      margin-bottom: 30px;
     }
     footer {
       background: #1a1a1a;
@@ -51,34 +73,58 @@
       padding-bottom: 6px;
       margin-bottom: 15px;
     }
+    .easter-egg {
+      display: none;
+      background-color: #222;
+      color: #4da6ff;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Developerchell</h1>
-    <p>💻 Scripter | 2 Years Experience | Lua & C++</p>
+    <div class="typing">💻 Scripter | Lua & C++ | Always building cool stuff</div>
   </header>
 
   <nav>
     <a href="#about">About</a> • 
-    <a href="#proof">Proof</a> • 
+    <a href="#projects">Projects</a> • 
     <a href="#contact">Contact</a>
   </nav>
 
   <section id="about">
     <h2>About</h2>
     <p>
-      I'm Developerchell, a passionate scripter with 2 years of experience working primarily in Lua and some C++.  
-      I specialize in creating simulators and various other scripts.  
+      I'm Developerchell, a passionate scripter with 2 years of experience working primarily in Lua and C++.  
+      I specialize in creating simulators, game mechanics, and automation scripts.  
       I’m open for commissions — DM me on Discord for business inquiries only.
     </p>
   </section>
 
-  <section id="proof" class="proof">
-    <h2>Proof</h2>
-    <img src="proof1.png" alt="Proof Screenshot 1" />
-    <img src="proof2.png" alt="Proof Screenshot 2" />
-    <img src="proof3.png" alt="Proof Screenshot 3" />
+  <section id="projects" class="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <h3>Simulator Engine (Roblox Lua)</h3>
+      <img src="proof1.png" alt="Simulator Project" />
+      <p>Custom simulator base with modular architecture, currency systems, and upgrade logic.</p>
+    </div>
+
+    <div class="project">
+      <h3>Game UI System</h3>
+      <img src="proof2.png" alt="UI Project" />
+      <p>Interactive and animated UI using Lua + TweenService for smooth transitions and user experience.</p>
+    </div>
+
+    <div class="project">
+      <h3>Performance Debug Tool</h3>
+      <img src="proof3.png" alt="Debug Tool" />
+      <p>Lightweight C++ tool to profile in-game memory usage and frame performance in real time.</p>
+    </div>
   </section>
 
   <section id="contact">
@@ -87,8 +133,26 @@
     <p>DMs open for commissions or professional inquiries only.</p>
   </section>
 
+  <section class="easter-egg" id="easterEgg">
+    🎉 You found the secret dev message: "Keep building. Keep learning. You're on the right path." 🧠
+  </section>
+
   <footer>
-    © 2025 Developerchell. Portfolio site built with ❤️
+    © 2025 Developerchell. Portfolio site built with ❤️ and some Lua magic.
   </footer>
+
+  <script>
+    // Konami Code Easter Egg
+    const secretCode = [38,38,40,40,37,39,37,39,66,65]; // up up down down left right left right B A
+    let input = [];
+
+    window.addEventListener("keydown", e => {
+      input.push(e.keyCode);
+      input.splice(-secretCode.length - 1, input.length - secretCode.length);
+      if (input.join(',') === secretCode.join(',')) {
+        document.getElementById("easterEgg").style.display = "block";
+      }
+    });
+  </script>
 </body>
 </html>
